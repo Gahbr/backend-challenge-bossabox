@@ -1,25 +1,16 @@
-console.log("naruto kun");
 const express = require('express');
 const dotenv = require ('dotenv').config();
 var mongoose = require('mongoose');
 var bodyParser = require("body-parser");
 const mongoUrl = process.env.MONGO_URI;
 const app = express();
+const UsefulTools = require('./model/UsefulTools')
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json())
 
 //mongo
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true });
-
-let toolsSchema = new mongoose.Schema({
-  title: {type: String , required: true },
-  link:{type: String, required: true},
-  description: {type: String, required: true},
-  tags: [String]
-})
-
-let UsefulTools = mongoose.model('UsefulTools', toolsSchema);
 
 
 //rotas
@@ -38,16 +29,13 @@ app.get('/tools', (req,res)=>{
         //procurar pela tag
         UsefulTools.find({ tags: query }, (err,data)=>{
             if(data.length == 0) {
-                res.json("Não há tags com esse nome")
+                res.json("Não há tags com esse nome.")
             }
             else {
                 res.json(data)
             }
         })
-      
-
     }
-   
 });
 
 app.get('/tools/:id', (req,res)=>{
@@ -63,11 +51,10 @@ app.post('/tools', (req,res)=>{
     UsefulTools.create({title: title, link:link, description:description, tags:tags}, function (err, data) {
         if (err) return res.json(err);
         else{
-          res.json(data);
-          return console.log("user Created!");
+          res.status(201).json(data);
+          return console.log("Usuário criado!");
         } 
         })
-
     })
 
     
@@ -77,10 +64,10 @@ app.delete('/tools/:id', (req,res)=>{
     UsefulTools.findById( id, (err, data) =>{
         if (err || !data){
           console.log(err);
-          res.send("Could not find user")
+          res.send("Usuário não encontrado.")
         }else {
             UsefulTools.findByIdAndDelete(id, ()=>{console.log("deletado");})
-            res.json("usuario deletado!")
+            res.json("Usuário deletado.")
         }
     })
 
