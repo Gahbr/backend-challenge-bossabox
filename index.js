@@ -4,9 +4,7 @@ var mongoose = require('mongoose');
 var bodyParser = require("body-parser");
 const mongoUrl = process.env.MONGO_URI;
 const app = express();
-const UsefulTools = require('./model/UsefulTools')
 const toolsRoute = require('./routes/toolsRoute');
-
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json())
@@ -14,7 +12,7 @@ app.use(bodyParser.json())
 //mongo
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true });
 
-//rotas
+//chamando as rotas
 app.get('/', (req,res)=>{
     res.send("Seja bem vindo à API da VUTTR (Very Useful Tools to Remember)!");
 });
