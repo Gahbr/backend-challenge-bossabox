@@ -13,6 +13,7 @@ const swaggerOptions= {
     swaggerDefinition:{
         info:{
             title: "VUTTR (Very Useful Tools to Remember) API",
+            description: "Documentação SWAGGER",
             version: '1.0.0'
         }
     },
