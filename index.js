@@ -5,7 +5,22 @@ var bodyParser = require("body-parser");
 const mongoUrl = process.env.MONGO_URI;
 const app = express();
 const toolsRoute = require('./routes/toolsRoute');
+const swaggerJsDoc = require('swagger-jsdoc')
+const swaggerUI = require('swagger-ui-express')
 
+//swagger
+const swaggerOptions= {
+    swaggerDefinition:{
+        info:{
+            title: "VUTTR (Very Useful Tools to Remember) API",
+            version: '1.0.0'
+        }
+    },
+    apis: ['./routes/*.js'],
+};
+
+const swaggerDocs = swaggerJsDoc(swaggerOptions);
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs))
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json())
 
@@ -18,8 +33,6 @@ app.get('/', (req,res)=>{
 });
 
 app.use('/tools', toolsRoute);
-
-
 
 //listener
 const listener = app.listen(3000, ()=>{
