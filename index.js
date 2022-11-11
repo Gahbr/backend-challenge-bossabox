@@ -5,25 +5,15 @@ var bodyParser = require("body-parser");
 const mongoUrl = process.env.MONGO_URI;
 const app = express();
 const toolsRoute = require('./routes/toolsRoute');
-const swaggerJsDoc = require('swagger-jsdoc')
-const swaggerUI = require('swagger-ui-express')
 const authRoute = require('./routes/authRoute');
 const Auth = require ('./middleware/auth');
+const swaggerFile = require('./swagger_output.json')
+const swaggerUI = require('swagger-ui-express');
+
 
 //swagger
-const swaggerOptions= {
-    swaggerDefinition:{
-        info:{
-            title: "VUTTR (Very Useful Tools to Remember) API",
-            description: "Documentação SWAGGER",
-            version: '1.0.0'
-        }
-    },
-    apis: ['./routes/*.js'],
-};
+app.use('/doc', swaggerUI.serve, swaggerUI.setup(swaggerFile))
 
-const swaggerDocs = swaggerJsDoc(swaggerOptions);
-app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs))
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json())
 

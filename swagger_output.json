@@ -1,0 +1,221 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "VUTTR (Very Useful Tools to Remember) API",
+    "description": "Documentação SWAGGER"
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/list": {
+      "get": {
+        "tags": [
+          "Login and Register"
+        ],
+        "description": "Lista todos os administradores disponíveis",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/register": {
+      "post": {
+        "tags": [
+          "Login and Register"
+        ],
+        "description": "Realizar o registro do administrador",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "username": {
+                  "example": "Cpt. Flint"
+                },
+                "password": {
+                  "example": "Yahhhrrrrrr"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "409": {
+            "description": "Conflict"
+          }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "tags": [
+          "Login and Register"
+        ],
+        "description": "Fazer o login",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "username": {
+                  "example": "Cpt. Flint"
+                },
+                "password": {
+                  "example": "Yahhhrrrrrr"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/tools/": {
+      "get": {
+        "tags": [
+          "Tools"
+        ],
+        "description": "Lista as ferramentas",
+        "parameters": [
+          {
+            "name": "tag",
+            "in": "query",
+            "type": "string"
+          },
+          
+          {
+          "in": "header",
+          "name": "Authorization",
+          "description": "Insira o Bearer + Token",
+          "type": "string",
+          "required":true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Tools"
+        ],
+        "description": "Criando uma nova ferramenta!",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "example": "Titulo da ferramenta"
+                },
+                "link": {
+                  "example": "https://exampletool.com"
+                },
+                "description": {
+                  "example": "Descrição da ferramenta "
+                },
+                "tags": {
+                  "example":"['web', 'nodejs', 'https']"
+                }               
+              }
+            }
+          },
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Insira o Bearer + Token",
+            "type": "string",
+            "required":true
+            }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    },
+    "/tools/{id}": {
+      "get": {
+        "tags": [
+          "Tools"
+        ],
+        "description": "Listando as ferramentas por ID!",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Insira o Bearer + Token",
+            "type": "string",
+            "required":true
+            }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Tools"
+        ],
+        "description": "Deletando uma ferramenta!",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Insira o Bearer + Token",
+            "type": "string",
+            "required":true
+            }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  }
+}

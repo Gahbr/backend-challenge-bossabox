@@ -14,6 +14,7 @@
 * MongoDB
 * Mongoose ODM
 * Swagger API
+* JWT (JSON Web Token) Authentication
 
 
 ## 🛣 Rotas

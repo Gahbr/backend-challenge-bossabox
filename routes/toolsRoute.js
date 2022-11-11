@@ -3,37 +3,9 @@ const UsefulTools = require('../model/UsefulTools')
 const toolsController = require('../controller/ToolsController'); 
 
 
-/**
- * @swagger
- * /tools/:
- *   get:
- *     description: Listando as ferramentas!
- *     responses:
- *       200:
- *         description: Success.
- */
+
 router.get('/', toolsController.listTools)
-
-/**
- * @swagger
- *
- * /tools/{id}:
- *   get:
- *     description: Listando as ferramentas por ID!
- *     produces:
- *       - application/json
- *     parameters:
- *       - name: id
- *         in: path
- *         required: true
- *         type: string
- *     responses:
- *       200:
- *         description: Sucesso. 
- *       
- */
-router.get('/:id', toolsController.findById)
-
+router.get('/:id',toolsController.findById)
 /**
  * @swagger
  *
