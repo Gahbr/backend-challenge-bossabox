@@ -7,6 +7,8 @@ const app = express();
 const toolsRoute = require('./routes/toolsRoute');
 const swaggerJsDoc = require('swagger-jsdoc')
 const swaggerUI = require('swagger-ui-express')
+const authRoute = require('./routes/authRoute');
+const Auth = require ('./middleware/auth');
 
 //swagger
 const swaggerOptions= {
@@ -33,7 +35,8 @@ app.get('/', (req,res)=>{
     res.send("Seja bem vindo à API da VUTTR (Very Useful Tools to Remember)!");
 });
 
-app.use('/tools', toolsRoute);
+app.use('/auth',authRoute)
+app.use('/tools', Auth.private, toolsRoute);
 
 //listener
 const listener = app.listen(3000, ()=>{
