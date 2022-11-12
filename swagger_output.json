@@ -11,7 +11,7 @@
     "http"
   ],
   "paths": {
-    "/list": {
+    "/auth/list": {
       "get": {
         "tags": [
           "Login and Register"
@@ -25,7 +25,7 @@
         }
       }
     },
-    "/register": {
+    "/auth/register": {
       "post": {
         "tags": [
           "Login and Register"
@@ -107,7 +107,7 @@
           {
           "in": "header",
           "name": "Authorization",
-          "description": "Insira o Bearer + Token",
+          "description": "Insira no formato: 'Bearer {Token}'",
           "type": "string",
           "required":true
           }
@@ -148,7 +148,7 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "Insira o Bearer + Token",
+            "description": "Insira no formato: 'Bearer {Token}'",
             "type": "string",
             "required":true
             }
@@ -179,7 +179,7 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "Insira o Bearer + Token",
+            "description": "Insira no formato: 'Bearer {Token}'",
             "type": "string",
             "required":true
             }
@@ -205,7 +205,7 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "Insira o Bearer + Token",
+            "description": "Insira no formato: 'Bearer {Token}'",
             "type": "string",
             "required":true
             }
