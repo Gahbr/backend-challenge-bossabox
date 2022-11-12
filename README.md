@@ -1,7 +1,7 @@
 # 🛠️ Very Useful Tools to Remember
 
 ## 💻 Sobre o projeto
- Este Projeto é um desafio de back-end proposto pela Bossabox para o processo seletivo de Desenvolvedor Back-end.
+ Este Projeto é um desafio de back-end proposto pela Bossabox para o processo seletivo de Desenvolvedor Back-end. Foi utilizado o swagger para fazer a documentação e  o JWT para a autenticação.
  
  Mais informações sobre o desafio aqui: https://www.notion.so/Back-end-0b2c45f1a00e4a849eefe3b1d57f23c6.
 
@@ -19,7 +19,7 @@
 
 ## 🛣 Rotas
 
-### GET /api-docs
+### GET /doc
   Para acessar  a documentação SWAGGER e fazer os testes de requisições
 ### GET / 
   Página principal
@@ -27,16 +27,25 @@
   Listagem de todos as ferramentas cadastradas no banco de dados.
 ### GET /tools/:id
   Listagem de todos  as ferramentas por ID.
-### POST / 
+### GET /auth/list 
+  Listagem de todos os administradores
+### POST /tools
 Insere nova ferramenta
+### POST /auth/login
+Realiza o login 
+### POST /auth/register 
+Insere novo registro de admin
 ### DELETE /:id
 Deleta Ferramenta
 
 ## 👩‍💻Instalação
  ### ```npm  install ```
  ### Rode o projeto com o script : ``` npm start```
- ### Criar um arquivo na pasta raiz do projeto chamado ".env" e inserir a URI no arquivo 
+ ### Criar um arquivo na pasta raiz do projeto chamado ".env" e inserir as seguintes propriedades no arquivo:
  ```MONGO_URI = {sua uri}```
+
+
+ ```JWT_SECRET_KEY = = {sua secret key}```
 
 ## 🦸 Autor
 
