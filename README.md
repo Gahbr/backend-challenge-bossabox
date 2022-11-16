@@ -42,11 +42,18 @@ Deleta Ferramenta
  ### ```npm  install ```
  ### Rode o projeto com o script : ``` npm start```
  ### Criar um arquivo na pasta raiz do projeto chamado ".env" e inserir as seguintes propriedades no arquivo:
- ```MONGO_URI = {sua uri}```
-
-
- ```JWT_SECRET_KEY = = {sua secret key}```
-
+ ```
+ MONGO_URI = {sua uri}
+ ```
+ ```
+ JWT_SECRET_KEY = {sua secret key}
+ ```
+ 
+ ## 🐋Docker
+Caso você queira rodar a aplicação diretamente do docker insira o código abaixo:
+```
+docker run -p 3000:3000 -e "MONGO_URI={inserir aqui uri}" -e JWT_SECRET_KEY={inserir aqui chave} gahbr/vuttr
+```
 ## 🦸 Autor
 
 <a href="https://github.com/Gahbr">
